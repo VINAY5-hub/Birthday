@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #a759f5;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: hidden; /* Hide overflow to prevent scrolling while animation is active */
+            position: relative; /* To position the hearts absolutely */
+        }
+        .container {
+            padding: 50px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            opacity: 0; /* Start hidden for animation */
+            transform: scale(0.9); /* Slightly scaled down for zoom-in effect */
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .container.show {
+            opacity: 1; /* Fade in */
+            transform: scale(1); /* Scale to original size */
+        }
+        .birthday-message {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out, bounce 2s infinite;
+        }
+        .sub-message {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            height: 350px;
+            width: 210px;
+            border-radius: 10px;
+        }
+        .image-gallery img {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .image-container:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .heart {
+            position: absolute;
+            top: -50px; /* Start above the viewport */
+            font-size: 2em;
+            color: #ff1493; /* Deep pink color */
+            animation: fall 4s infinite; /* Animation to make hearts fall */
+            z-index: 1;
+        }
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px); /* Start from above the viewport */
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* End at the bottom of the viewport */
+                opacity: 0;
+            }
+        }
+        .footer {
+            font-size: 1.2em;
+            margin-top: 30px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="birthday-message">
+            <h1>Happy Birthday!</h1>
+            <p>Wishing you a day filled with love, joy, and laughter!</p>
+        </div>
+        <div class="sub-message">
+            <p>May your special day be as wonderful as you are!</p>
+        </div>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="./IMAGE/anshii1.jpg" alt="Birthday Cake">
+                <div class="overlay">Delicious Cake!</div>
+            </div>
+            <div class="image-container">
+                <img src="./IMAGE/anshii2.jpg" alt="Balloons">
+                <div class="overlay">Bright Balloons!</div>
+            </div>
+            <div class="image-container">
+                <img src="./IMAGE/anshii3.jpg" alt="Gifts">
+                <div class="overlay">Exciting Gifts!</div>
+            </div>
+            <div class="image-container">
+                <img src="./IMAGE/anshii4.jpg" alt="Party Hat">
+                <div class="overlay">Fun Party Hat!</div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Best wishes from all of us!</p>
+        </div>
+    </div>
+    <!-- Heart Symbols -->
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <script>
+        window.addEventListener('load', () => {
+            const container = document.querySelector('.container');
+            container.classList.add('show');
+            // Allow scrolling after the animation completes
+            setTimeout(() => {
+                document.body.style.overflowY = 'auto';
+            }, 1000); // Match the duration of the animation
+        });
+    </script>
+</body>
+</html>
